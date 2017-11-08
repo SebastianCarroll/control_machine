@@ -27,6 +27,6 @@
        - { n: 'br', v: 'branch' }
        - { n: 'ci', v: 'commit' }
        - { n: 'st', v: 'status' }
-       - { n: 'diffs', v: '"diff --staged"' }
-       - { n: 'lg', v: '"log --oneline --graph --decorate"' }
-       - { n: 'mbr', v: '"merge --no-ff --edit"' }
+       - { n: 'diffs', v: 'diff --staged' }
+       - { n: 'lg', v: 'log --oneline --graph --decorate' }
+       - { n: 'mbr', v: 'merge --no-ff --edit' }
