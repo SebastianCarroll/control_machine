@@ -1,0 +1,32 @@
+---
+- hosts: all
+  tasks:
+   - name: Installing base backages for hortonworks-ansible
+     yum: name="{{ item }}" state=latest
+     with_items:
+       - git
+       - vim
+       - telnet
+     become: true
+  
+   - name: Enable EPEL repo
+     ini_file:
+       dest: /etc/yum.repos.d/epel.repo
+       section: epel
+       option: enabled
+       value: 1
+     become: true
+
+   - name: Setup git config
+     git_config:
+       name: alias."{{ item.n }}"
+       scope: global
+       value: "{{ item.v }}"
+     with_items:
+       - { n: 'co', v: 'checkout' }
+       - { n: 'br', v: 'branch' }
+       - { n: 'ci', v: 'commit' }
+       - { n: 'st', v: 'status' }
+       - { n: 'diffs', v: '"diff --staged"' }
+       - { n: 'lg', v: '"log --oneline --graph --decorate"' }
+       - { n: 'mbr', v: '"merge --no-ff --edit"' }
