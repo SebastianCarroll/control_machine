@@ -7,6 +7,16 @@
        - git
        - vim
        - telnet
+       - gcc
+       - gcc-c++
+       - python-virtualenv
+       - python-pip
+       - python-devel
+       - libffi-devel
+       - openssl-devel
+       - sshpass
+       - git
+       - vim-enhanced
      become: true
   
    - name: Enable EPEL repo
