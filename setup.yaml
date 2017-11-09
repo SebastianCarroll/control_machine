@@ -40,3 +40,25 @@
        - { n: 'diffs', v: 'diff --staged' }
        - { n: 'lg', v: 'log --oneline --graph --decorate' }
        - { n: 'mbr', v: 'merge --no-ff --edit' }
+
+   - name: Checkout ansible-hortonworks git
+     git:
+      repo: git@github.com:hortonworks/ansible-hortonworks.git
+      dest: ~/ansible-hortonworks
+
+   - name: Upgrade setuptools in the virtualenv
+     pip:
+       name: setuptools
+       extra_args: --upgrade
+       virtualenv: ~/ansible
+
+   - name: Upgrade pip in the virtualenv
+     pip:
+       name: pip
+       extra_args: --upgrade
+       virtualenv: ~/ansible
+
+   - name: Install pip packages into the virtualenv
+     pip:
+       name: pycparser ansible==2.3.2 boto
+       virtualenv: ~/ansible
