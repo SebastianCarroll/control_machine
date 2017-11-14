@@ -1,0 +1,13 @@
+---
+- hosts: all
+  tasks:
+   - name: Installing growpart
+     yum: name="{{ item }}" state=latest
+     with_items:
+       - epel-release
+       - cloud-utils-growpart 
+     become: true
+
+   - name: Grow partition
+     shell: growpart /dev/xvda 1
+     become: true
