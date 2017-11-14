@@ -1,0 +1,3 @@
+ansible-playbook -i ../ansible-hortonworks/inventory/static resize_part.yaml
+ssh -i ~/.ssh/cluster_nodes.pem centos@172.31.43.15
+ansible all -i ../ansible-hortonworks/inventory/static -a "/sbin/reboot" --become
